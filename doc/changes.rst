@@ -5,8 +5,11 @@ desisim-testdata change log
 0.6.2 (unreleased)
 ------------------
 
+* Add BAL lite templates (`PR #15`_). 
 * Added trimmed desi/spectro/templates/cosmics/v0.3/
 * Add v3.2 lite basis templates.
+
+.. _`PR #15`: https://github.com/desihub/desisim-testdata/pull/15
 
 0.6.1 (2018-12-11)
 ------------------
@@ -14,7 +17,7 @@ desisim-testdata change log
 * Add v3.1 lite basis templates, which include pre-computed DESI colors as a
   dedicated HDU (`PR #14`_). 
 
-.. _`PR #14`: https://github.com/desihub/desisim/pull/14
+.. _`PR #14`: https://github.com/desihub/desisim-testdata/pull/14
 
 0.6.0 (2018-11-08)
 ------------------

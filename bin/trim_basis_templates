@@ -37,6 +37,17 @@ def trim_template(infile, outfile):
             hdus.append(fits.BinTableHDU(fx['DESI-COLORS'].data[0::n], header=fx['DESI-COLORS'].header))
     hdus.writeto(outfile, overwrite=True)
 
+def trim_bal_template(infile, outfile):
+    print(infile, '->', outfile)
+    n = 30
+    hdus = fits.HDUList()
+    with fits.open(infile) as fx:
+        try:
+            hdus.append(fits.BinTableHDU(fx['METADATA'].data[0::n], header=fx['METADATA'].header))
+        except:
+            log.warning('Missing EXTNAME=METADATA in template file {}'.format(infile))
+    hdus.writeto(outfile, overwrite=True)
+
 def trim_qso(infile, outfile):
     print(infile, '->', outfile)
     n = 10
@@ -74,10 +85,12 @@ def main():
     for infile in sorted(glob(os.path.join(opts.indir, '*_templates_*.fits'))):
         basename = os.path.basename(infile)
         outfile = os.path.join(opts.outdir, basename.replace('.fits', '-lite.fits'))
+        if 'bal' not in basename:
+            continue
         if basename.startswith('qso'):
             trim_qso(infile, outfile)
         elif basename.startswith('bal'):
-            pass # to be added
+            trim_bal_template(infile, outfile)
         else:
             trim_template(infile, outfile)
 
