@@ -75,4 +75,5 @@ setenv DESISIM_TESTDATA $PRODUCT_DIR
 #
 # Add any non-standard Module code below this point.
 #
-setenv DESI_BASIS_TEMPLATES $PRODUCT_DIR/desi/spectro/templates/basis_templates/v3.2
+pushenv DESI_ROOT $PRODUCT_DIR/desi
+pushenv DESI_BASIS_TEMPLATES $PRODUCT_DIR/desi/spectro/templates/basis_templates/v3.2
